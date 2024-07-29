@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        {% block links %}{% endblock %}
+        
+        <style>
+            body {
+                background-color: #121212;
+                color: #fff;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+            }
+    
+            .navbar-custom {
+                justify-content: center;
+                padding: 20px 0;
+                margin-top: 30px;
+            }
+    
+            .option, .name-tag {
+                color: #a8adb2;
+                margin: 0 11px;
+                text-decoration: none;
+                font-weight: normal;
+                font-size: 19px;
+            }
+      
+            .name-tag {
+                font-family: "system-ui", Roboto, "Helvetica Neue", sans-serif;
+                letter-spacing: 0.1em;
+                font-weight: 700;
+                font-size: 19px;
+                margin-right: 230px;
+                text-decoration: none;
+            }
+            
+            .option:hover, .name-tag:hover, .profile-text a:hover {
+            text-decoration: none;
+            color: lightskyblue;
+            }
+        </style>
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-custom">
+            <a href="{% url 'index' %}" class="name-tag">MARTIN SKACHKOV</a>
+            <a href="#" class="option">About</a>
+            <a href="{% url 'projects' %}" class="option">Projects</a>
+            <a href="#" class="option">Contact Me</a>
+        </nav>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,126 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin Skachkov</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    <style>
-        body {
-            background-color: #121212;
-            color: #fff;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;;
-        }
+{% extends 'portfolio_app/layout.html' %}
 
-        .navbar-custom {
-            justify-content: center;
-            padding: 20px 0;
-            margin-top: 30px;
-        }
+{% block title %}Martin Skachkov{% endblock %}
 
-        .option, .name-tag {
-            color: #a8adb2;
-            margin: 0 11px;
-            text-decoration: none;
-            font-weight: normal;
-            font-size: 19px;
-        }
-  
-        .name-tag {
-            font-family: "system-ui", Roboto, "Helvetica Neue", sans-serif;
-            letter-spacing: 0.1em;
-            font-weight: 700;
-            font-size: 19px;
-            margin-right: 230px;
-            text-decoration: none;
-        }
-        
-        .option:hover, .name-tag:hover, .profile-text a:hover {
+{% block links %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block style %}
+<style>
+    .profile-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 0;
+        margin-top: 50px;
+    }
+
+    .profile-img {
+        width: 142px;
+        height: 142px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin-right: 30px;
+        box-shadow:0 0 0 1px white,  0 1px 2px 4px rgb(255, 47, 0);
+    }
+
+    .profile-text {
+        text-align: left;          
+    }
+
+    .profile-text h1 {
+        font-weight: bold;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .profile-text p, .profile-text a {
+        font-size: 32px;
+        color: #a8adb2;
+    }
+
+    .profile-text a {
+        text-decoration: none; 
+    }
+
+    .social-icons {
+        text-align: center;
+        margin-top: 400px;
+    }
+
+    .social-icons a {
+        margin: 0 15px;
+        font-size: 20px;
         text-decoration: none;
-        color: lightskyblue;
-        }
+        color: #a8adb2;
+    }
 
-        .profile-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px 0;
-            margin-top: 50px;
-        }
+    .social-icons i {
+        margin-right: 2px;
+        color: #fff;
+    }
+</style>
+{% endblock %}
 
-        .profile-img {
-            width: 142px;
-            height: 142px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            margin-right: 30px;
-            box-shadow:0 0 0 1px white,  0 1px 2px 4px rgb(255, 47, 0);
-        }
-
-        .profile-text {
-            text-align: left;          
-        }
-
-        .profile-text h1 {
-            font-weight: bold;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .profile-text p, .profile-text a {
-            font-size: 32px;
-            color: #a8adb2;
-        }
-
-        .profile-text a {
-            text-decoration: none; 
-        }
-
-        .social-icons {
-            text-align: center;
-            margin-top: 400px;
-        }
-
-        .social-icons a {
-            margin: 0 15px;
-            font-size: 20px;
-            text-decoration: none;
-            color: #a8adb2;
-        }
-
-        .social-icons i {
-            margin-right: 2px;
-            color: #fff;
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar navbar-custom">
-        <a href="{% url 'index' %}" class="name-tag">MARTIN SKACHKOV</a>
-        <a href="#" class="option">About</a>
-        <a href="#" class="option">Projects</a>
-        <a href="#" class="option">Contact Me</a>
-    </nav>
-
-    <div class="profile-container">
-        <img src="https://media.licdn.com/dms/image/C4E03AQFrU2GIRNzKXg/profile-displayphoto-shrink_200_200/0/1636307135564?e=1727913600&v=beta&t=4EksUnjSiXdbUHXzVzKWjmmq7e0Vke_4r66U1kDxAf8" alt="Profile Photo" class="profile-img">
-        <div class="profile-text">
-            <h1>Hey, I'm Martin.</h1>
-            <p>I go to class and learn to write code <br>
-                <a href="https://www.fmi.uni-sofia.bg/" target="_blank">@Faculty of Mathematics and Informatics, Sofia University...</a><br>
-                ... sometimes it even works! <i class="fas fa-spinner fa-pulse" style="color: #e8eaea;"></i>
-            </p>
-        </div>
+{% block body %}
+<div class="profile-container">
+    <img src="https://media.licdn.com/dms/image/C4E03AQFrU2GIRNzKXg/profile-displayphoto-shrink_200_200/0/1636307135564?e=1727913600&v=beta&t=4EksUnjSiXdbUHXzVzKWjmmq7e0Vke_4r66U1kDxAf8" alt="Profile Photo" class="profile-img">
+    <div class="profile-text">
+        <h1>Hey, I'm Martin.</h1>
+        <p>I go to class and learn to write code <br>
+            <a href="https://www.fmi.uni-sofia.bg/" target="_blank">@Faculty of Mathematics and Informatics, Sofia University...</a><br>
+            ... sometimes it even works! <i class="fas fa-spinner fa-pulse" style="color: #e8eaea;"></i>
+        </p>
     </div>
+</div>
 
-    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/martin-skachkov-a561ab225" target="_blank"><i class="fab fa-linkedin" style="color: #0077B5;"></i> LinkedIn</a>
-        <a href="https://github.com/MartinSkachkov" target="_blank"><i class="fab fa-github" style="color: #e8eaea;"></i> Github</a>
-    </div>
-
-</body>
-</html>
+<div class="social-icons">
+    <a href="https://www.linkedin.com/in/martin-skachkov-a561ab225" target="_blank"><i class="fab fa-linkedin" style="color: #0077B5;"></i> LinkedIn</a>
+    <a href="https://github.com/MartinSkachkov" target="_blank"><i class="fab fa-github" style="color: #e8eaea;"></i> Github</a>
+</div>
+{% endblock %}
