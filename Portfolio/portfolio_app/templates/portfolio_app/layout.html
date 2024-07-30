@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!--<link rel="icon" href="../../img/profile-modified.png" type="image/png"> -->
         {% block links %}{% endblock %}
         
         <style>
             body {
                 background-color: #121212;
                 color: #fff;
-                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             }
     
             .navbar-custom {
@@ -49,7 +50,7 @@
             <a href="{% url 'index' %}" class="name-tag">MARTIN SKACHKOV</a>
             <a href="#" class="option">About</a>
             <a href="{% url 'projects' %}" class="option">Projects</a>
-            <a href="#" class="option">Contact Me</a>
+            <a href="{% url 'contact' %}" class="option">Contact Me</a>
         </nav>
 
         {% block body %}{% endblock %}

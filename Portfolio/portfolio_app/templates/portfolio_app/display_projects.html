@@ -2,4 +2,69 @@
 
 {% block title %}Projects{% endblock %}
 
-{% block body %}hello{% endblock %}
+{% block links %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block style %}
+<style>
+.project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all items */
+    margin-top: 30px;
+}
+
+.project-item {
+    margin-bottom: 10px; /* Space between projects */
+    margin-left:-3px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.project-name {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 27px;
+    color: #eef5fc;
+}
+
+.project-name a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-name a:hover {
+    color: #cab287;
+}
+
+.project-category {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    color: #c2cbd4;
+}
+
+.project-description {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 19px;
+    color: #adb4bb;
+    white-space: normal; /* Allow text wrapping */
+    max-width: 700px; /* Limit maximum width */
+    overflow-wrap: break-word; /* Break long words */
+    padding: 10px; /* Add padding for better readability */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="project-container">
+    {% for project in projects %}
+        <div class="project-item">
+            <ul>
+                <li class="project-name"><a href="{{ project.github_link }}" target="_blank">{{ project.name }}</a></li>
+                <div class="project-category">{{ project.category }}</div>
+                <div class="project-description">{{ project.description }}</div>
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
