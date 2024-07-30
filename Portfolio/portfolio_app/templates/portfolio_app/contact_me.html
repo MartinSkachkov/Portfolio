@@ -1,0 +1,101 @@
+{% extends 'portfolio_app/layout.html' %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block style%}
+<style>
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 20px;
+}
+
+label,h2 {
+    color: #c2cbd4;
+}
+
+#ask_me {
+    font-size: 20px;
+}
+
+/* Style for the button */
+.duck-button {
+    position: relative;
+    font-size: 1rem; /* Size of the emoji */
+    padding: 10px 20px; /* Adjust padding as needed */
+}
+
+/* Hidden text box */
+.duck-button::after {
+    content: "Quack";
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000000; /* Background color for the hover text box */
+    padding: 8px 16px; /* Moderate padding for the text box */
+    border: 1px solid #ddd; /* Border for better visibility */
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent the text from wrapping */
+    font-size: 1rem; /* Adjust the font size of the hover text */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s, visibility 0.3s; /* Smooth transition */
+}
+
+/* Show text box on hover */
+.duck-button:hover::after {
+    opacity: 1; /* Show text box */
+    visibility: visible; /* Make text box visible */
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <h2 class="mt-4 mb-4 text-center">Only messages by pigeons... (or Email)</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group mb-4">
+            <label for="first_name">First Name:</label>
+            <input class="form-control" type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group mb-4">
+            <label for="last_name">Last Name:</label>
+            <input class="form-control" type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="form-group mb-4">
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group mb-4">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button class="btn btn-secondary mb-4 duck-button" type="submit"><div id="ask_me">Ask Me</div></button>
+        {% if messages %}
+            <div class="mt-3">
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {% elif message.tags == 'success' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {% else %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {% endif %}
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
